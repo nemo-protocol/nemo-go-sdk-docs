@@ -30,4 +30,4 @@ Below are the main functional categories provided by `nemo-go-sdk` and their det
 
 > Each section contains detailed documentation about the available functions, their parameters, return values, and usage examples. Click on the respective links to learn more about each feature set.
 
-## Quick Start(/docs/AccountAndInitialization.md)
+## Quick Start
