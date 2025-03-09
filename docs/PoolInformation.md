@@ -55,9 +55,9 @@ fmt.Printf("YT APY: %.2f%%\n", ytApy/100)      // Actual percentage
 ### Usage Tips
 
 1. **APY Calculation Notes**
-    - Returned APY values are multiplied by 100
-    - Divide by 100 to get actual percentage
-    - Example: returned value "1000" → actual APY 10%
+    - The returned APY values represent the percentage in integer form.
+    - To obtain the actual percentage, divide the returned value by 100.
+    - Example: If the returned value is "100", it represents an actual APY of 100%, which means you need to divide by 100 to get the true decimal value of 1.
 
 2. **Query Recommendations**
     - Recommended to query hourly for latest APY
