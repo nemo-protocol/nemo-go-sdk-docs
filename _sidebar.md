@@ -4,3 +4,4 @@
 * [Asset Exchange](docs/AssetExchange.md)
 * [Reward Claims](docs/RewardClaims.md)
 * [Pool Information](docs/PoolInformation.md)
+* [Asset Information](docs/assetInformation.md)

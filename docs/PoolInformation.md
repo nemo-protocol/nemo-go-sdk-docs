@@ -67,3 +67,5 @@ fmt.Printf("YT APY: %.2f%%\n", ytApy/100)      // Actual percentage
 - APY data is real-time and may fluctuate with market conditions
 - Convert values to readable percentage format for display
 - Use correct proportions when calculating yields
+
+[Asset Information](/docs/assetInformation.md)
