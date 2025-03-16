@@ -1,6 +1,7 @@
 * [Overview](docs/Summary.md)
 * [Account and Initialization](docs/AccountAndInitialization.md)
 * [Liquidity Operations](docs/LiquidityOperations.md)
+* [Principal Token Operations Guide](/docs/MintPy.md)
 * [Asset Exchange](docs/AssetExchange.md)
 * [Reward Claims](docs/RewardClaims.md)
 * [Pool Information](docs/PoolInformation.md)
