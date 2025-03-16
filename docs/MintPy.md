@@ -1,14 +1,12 @@
-# Liquidity Operations Guide
+# Principal Token Operations Guide
 
-## 1. Add Liquidity
-> Add liquidity using `scoin` assets or underlying assets
+## 1. MintPy
+> Mint PT/YT pair by depositing underlying assets
 
 ```go
-func AddLiquidity(
+func MintPy(
     amountIn float64,      // Input amount
-    slippage float64,      // Slippage
     sender *account.Account,// Sender account
-    amountInType string,   // Input asset type
     nemoConfig *models.NemoConfig, // Nemo configuration
 ) (bool, error)
 ```
@@ -17,9 +15,7 @@ func AddLiquidity(
 | Parameter | Type | Description |
 |:----------|:-----|:------------|
 | amountIn | float64 | Input asset amount |
-| slippage | float64 | Transaction slippage percentage |
 | sender | *account.Account | User account information |
-| amountInType | string | Input asset type |
 | nemoConfig | *models.NemoConfig | Nemo protocol configuration |
 
 ### Returns
@@ -34,12 +30,10 @@ func AddLiquidity(
 sender := account.NewAccount(...)
 config := &models.NemoConfig{...}
 
-// Add liquidity
-success, err := nemoService.AddLiquidity(
-    1000.0,             // Add 1000 tokens
-    0.01,              // 1% slippage
+// Mint PT/YT pair
+success, err := nemoService.MintPy(
+    1000.0,             // Deposit 1000 tokens
     sender,            // User account
-    "0x2::sui::SUI",   // SUI token
     config,            // Nemo configuration
 )
 
@@ -50,15 +44,13 @@ if err != nil {
 
 ---
 
-## 2. Redeem Liquidity
-> Withdraw `scoin` assets or underlying assets from liquidity pool
+## 2. RedeemPy
+> Redeem underlying assets by burning PT/YT pair
 
 ```go
-func RedeemLiquidity(
-    amountOut float64,     // Withdrawal amount
-    slippage float64,      // Slippage
+func RedeemPy(
+    amountIn float64,      // Input amount of PT/YT pair
     sender *account.Account,// Sender account
-    amountOutType string,  // Withdrawal asset type
     nemoConfig *models.NemoConfig, // Nemo configuration
 ) (bool, error)
 ```
@@ -66,10 +58,8 @@ func RedeemLiquidity(
 ### Parameters
 | Parameter | Type | Description |
 |:----------|:-----|:------------|
-| amountOut | float64 | Desired withdrawal amount |
-| slippage | float64 | Transaction slippage percentage |
+| amountIn | float64 | Amount of PT/YT pair to redeem |
 | sender | *account.Account | User account information |
-| amountOutType | string | Withdrawal asset type |
 | nemoConfig | *models.NemoConfig | Nemo protocol configuration |
 
 ### Returns
@@ -84,12 +74,10 @@ func RedeemLiquidity(
 sender := account.NewAccount(...)
 config := &models.NemoConfig{...}
 
-// Redeem liquidity
-success, err := nemoService.RedeemLiquidity(
-    500.0,              // Withdraw 500 tokens
-    0.01,              // 1% slippage
+// Redeem underlying assets
+success, err := nemoService.RedeemPy(
+    500.0,              // Redeem 500 PT/YT pairs
     sender,            // User account
-    "0x2::sui::SUI",   // Withdraw SUI tokens
     config,            // Nemo configuration
 )
 
@@ -98,4 +86,21 @@ if err != nil {
 }
 ```
 
-[Principal Token Operations Guide](/docs/MintPy.md)
+### Notes
+- MintPy creates both PT and YT tokens in equal amounts
+- RedeemPy requires both PT and YT tokens in equal amounts
+- Ensure sufficient balance before operations
+- Consider gas fees for transactions
+
+### Best Practices
+1. **Before Minting**
+    - Check available balance
+    - Verify market conditions
+    - Understand minting ratio
+
+2. **Before Redeeming**
+    - Ensure equal PT/YT balance
+    - Check redemption value
+    - Consider timing for better returns
+
+[Asset Exchange](/docs/AssetExchange.md)
