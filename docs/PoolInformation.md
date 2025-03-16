@@ -68,4 +68,4 @@ fmt.Printf("YT APY: %.2f%%\n", ytApy/100)      // Actual percentage
 - Convert values to readable percentage format for display
 - Use correct proportions when calculating yields
 
-[Asset Information](/docs/assetInformation.md)
+[Asset Information](/docs/AssetInformation.md)
